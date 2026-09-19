@@ -13,6 +13,7 @@ import { ProjectModal } from "@/components/ProjectModal";
 import { ReelModal } from "@/components/ReelModal";
 import { AboutView } from "@/components/AboutView";
 import { ContactView } from "@/components/ContactView";
+import { AiAssistant } from "@/components/AiAssistant";
 
 export default function HomePage() {
   const projects = projectsData as unknown as Project[];
@@ -20,6 +21,7 @@ export default function HomePage() {
   const [activeProjectIndex, setActiveProjectIndex] = useState<number>(0);
   const [selectedProjectDetail, setSelectedProjectDetail] = useState<Project | null>(null);
   const [isReelOpen, setIsReelOpen] = useState<boolean>(false);
+  const [isAiOpen, setIsAiOpen] = useState<boolean>(false);
 
   const activeProject = projects[activeProjectIndex] || projects[0];
   const accentColor = activeProject?.uiColor || "ba7cde";
@@ -52,6 +54,7 @@ export default function HomePage() {
         currentSection={activeSection}
         onSelectSection={setActiveSection}
         accentColor={accentColor}
+        onOpenAi={() => setIsAiOpen(true)}
       />
 
       {/* Project Detail Modal */}
@@ -79,6 +82,19 @@ export default function HomePage() {
         onClose={() => setActiveSection("work")}
         accentColor={accentColor}
         contactData={contactData}
+      />
+
+      {/* AI Companion Modal */}
+      <AiAssistant
+        isOpen={isAiOpen}
+        onClose={() => setIsAiOpen(false)}
+        accentColor={accentColor}
+        projects={projects}
+        onOpenProject={(p) => setSelectedProjectDetail(p)}
+        onOpenContact={() => {
+          setIsAiOpen(false);
+          setActiveSection("contact");
+        }}
       />
     </main>
   );

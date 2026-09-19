@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Sparkles } from "lucide-react";
 import { audioEngine } from "./AudioEngine";
 import type { ActiveSection } from "@/types/activetheory";
 
@@ -8,12 +9,14 @@ interface NavigationProps {
   currentSection: ActiveSection;
   onSelectSection: (section: ActiveSection) => void;
   accentColor: string; // e.g. "ba7cde" or "#ba7cde"
+  onOpenAi?: () => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   currentSection,
   onSelectSection,
   accentColor,
+  onOpenAi,
 }) => {
   const [audioActive, setAudioActive] = useState(false);
 
@@ -92,6 +95,19 @@ export const Navigation: React.FC<NavigationProps> = ({
           )}
           Contact
         </button>
+
+        {/* AI Companion Button */}
+        {onOpenAi && (
+          <button
+            type="button"
+            onClick={onOpenAi}
+            title="Ask Ali AI Companion"
+            className="relative flex items-center gap-1.5 px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-full cursor-pointer text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/15"
+          >
+            <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" />
+            <span>AI</span>
+          </button>
+        )}
 
         {/* Divider */}
         <div className="h-4 w-[1px] bg-white/15 mx-1" />
