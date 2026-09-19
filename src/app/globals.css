@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@font-face {
+  font-family: "nbarchitekt";
+  src: url("/fonts/NBArchitektStd-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "nbarchitekt";
+  src: url("/fonts/NBArchitektStd-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "nbarchitekt";
+  src: url("/fonts/NBArchitektStd-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --font-architekt: "nbarchitekt", monospace, -apple-system, sans-serif;
+  --accent-color: #ba7cde;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-architekt);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Equalizer audio wave animation */
+@keyframes eq-bar {
+  0% { height: 3px; }
+  50% { height: 16px; }
+  100% { height: 3px; }
+}
+
+.animate-eq-1 {
+  animation: eq-bar 0.8s ease-in-out infinite alternate;
+}
+.animate-eq-2 {
+  animation: eq-bar 1.1s ease-in-out 0.2s infinite alternate;
+}
+.animate-eq-3 {
+  animation: eq-bar 0.9s ease-in-out 0.4s infinite alternate;
+}
+.animate-eq-4 {
+  animation: eq-bar 1.2s ease-in-out 0.1s infinite alternate;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
